@@ -3,10 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-ext {
-    compose_version = "1.6.4"
-}
-
 android {
     namespace 'com.bush.littlelemonapp'
     compileSdk 34
@@ -19,15 +15,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildFeatures {
-        compose true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion "1.5.21"
     }
 
     buildTypes {
@@ -54,8 +41,4 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling:$compose_version"
 }

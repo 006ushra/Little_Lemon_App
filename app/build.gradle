@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.bush.littlelemonapp'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.bush.littlelemonapp"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 

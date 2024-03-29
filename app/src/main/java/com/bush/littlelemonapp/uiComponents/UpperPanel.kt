@@ -62,7 +62,7 @@ fun UpperPanel() {
             onClick = {},
             colors = ButtonColors(
                 ThemeColor.yellow,
-                ThemeColor.black,
+                ThemeColor.charcoal,
                 ThemeColor.paleYellow,
                 ThemeColor.grey
             )

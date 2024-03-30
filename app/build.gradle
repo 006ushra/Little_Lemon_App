@@ -71,4 +71,9 @@ dependencies {
     // Integration with RxJava
     implementation("androidx.compose.runtime:runtime-rxjava2")
 
+    //ktor for REST API
+    implementation 'io.ktor:ktor-client-android:2.1.3'
+    implementation "io.ktor:ktor-client-content-negotiation:2.1.3"
+    implementation "io.ktor:ktor-serialization-kotlinx-json:2.1.3"
+
 }

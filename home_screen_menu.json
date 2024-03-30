@@ -1,0 +1,40 @@
+{
+    "menu": [
+        {
+            "id": 1,
+            "name": "Greek Salad",
+            "description": "The famous greek salad of crispy lettuce, peppers, olives, our Chicago.",
+            "price": 12.99
+        },
+        {
+            "id": 2,
+            "name": "Lemon Desert",
+            "description": "Traditional homemade Italian Lemon Ricotta Cake.",
+            "price": 8.99
+        },
+        {
+            "id": 3,
+            "name": "Bruschetta",
+            "description": "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
+            "price": 4.99
+        },
+        {
+            "id": 4,
+            "name": "Grilled Fish",
+            "description": "Fish marinated in fresh orange and lemon juice. Grilled with orange and lemon wedges.",
+            "price": 19.99
+        },
+        {
+            "id": 5,
+            "name": "Pasta",
+            "description": "Penne with fried aubergines, cherry tomatoes, tomato sauce, fresh chilli, garlic, basil & salted ricotta cheese.",
+            "price": 8.99
+        },
+        {
+            "id": 6,
+            "name": "Lasagne",
+            "description": "Oven-baked layers of pasta stuffed with Bolognese sauce, béchamel sauce, ham, Parmesan & mozzarella cheese .",
+            "price": 7.99
+        }
+    ]
+}

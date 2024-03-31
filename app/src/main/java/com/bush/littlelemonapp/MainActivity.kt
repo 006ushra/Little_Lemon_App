@@ -6,7 +6,10 @@ import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
+import com.bush.littlelemonapp.local.AppDatabase
 import com.bush.littlelemonapp.remote.HomeMenu
+import com.bush.littlelemonapp.remote.HomeMenuItem
 import com.bush.littlelemonapp.uiComponents.LowerPanel
 import com.bush.littlelemonapp.uiComponents.TopAppBar
 import com.bush.littlelemonapp.uiComponents.UpperPanel
@@ -18,6 +21,7 @@ import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         install(ContentNegotiation) {
             json(contentType = ContentType("text", "plain"))
         }
+    }
+    private val database by lazy {
+        Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database")
+            .build()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,16 +46,25 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        lifecycleScope.launch {
-            getHomeMenuItems()
+        lifecycleScope.launch(Dispatchers.IO) {
+            if (database.menuItemDao().isEmpty()) {
+                saveHomeMenuItems(getHomeMenuItems())
+            }
         }
     }
 
-    private suspend fun getHomeMenuItems() {
+    private suspend fun getHomeMenuItems(): List<HomeMenuItem> {
         val response = httpClient.get("https://raw.githubusercontent.com/006ushra/Little_Lemon_App/master/home_screen_menu.json") {
             header("Authorization", "TOKEN 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")
         }
             .body<HomeMenu>()
-        Log.d("RESPONSE", response.toString())
+        return response.menu
+    }
+
+    private fun saveHomeMenuItems(itemsList: List<HomeMenuItem>) {
+        val localItemsList = itemsList.map {
+            it.convertToLocalItem()
+        }
+        database.menuItemDao().insertAll(localItemsList)
     }
 }

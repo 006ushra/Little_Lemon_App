@@ -1,5 +1,6 @@
 package com.bush.littlelemonapp.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -11,4 +12,7 @@ interface HomeMenuItemDao {
 
     @Query("SELECT (SELECT COUNT(*) FROM HomeMenuItemLocal) == 0")
     fun isEmpty(): Boolean
+
+    @Query("SELECT * FROM HomeMenuItemLocal")
+    fun getAll(): LiveData<List<HomeMenuItemLocal>>
 }

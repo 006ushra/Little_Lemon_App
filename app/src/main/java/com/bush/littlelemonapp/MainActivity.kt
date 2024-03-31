@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.bush.littlelemonapp.local.AppDatabase
@@ -39,10 +41,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LittleLemonTheme {
+                val homeMenuList by database.menuItemDao().getAll().observeAsState(emptyList())
                 Column {
                     TopAppBar()
                     UpperPanel()
-                    LowerPanel()
+                    LowerPanel(homeMenuList)
                 }
             }
         }

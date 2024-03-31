@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.lifecycle.lifecycleScope
+import com.bush.littlelemonapp.remote.HomeMenu
 import com.bush.littlelemonapp.uiComponents.LowerPanel
 import com.bush.littlelemonapp.uiComponents.TopAppBar
 import com.bush.littlelemonapp.uiComponents.UpperPanel
@@ -38,15 +39,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
         lifecycleScope.launch {
-            getMenuItems()
+            getHomeMenuItems()
         }
     }
 
-    private suspend fun getMenuItems() {
+    private suspend fun getHomeMenuItems() {
         val response = httpClient.get("https://raw.githubusercontent.com/006ushra/Little_Lemon_App/master/home_screen_menu.json") {
             header("Authorization", "TOKEN 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")
         }
-            .body<String>()
-        Log.d("RESPONSE", response)
+            .body<HomeMenu>()
+        Log.d("RESPONSE", response.toString())
     }
 }

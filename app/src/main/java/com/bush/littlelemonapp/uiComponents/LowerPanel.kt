@@ -14,20 +14,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.bush.littlelemonapp.DishDetails
 import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 
 @Composable
-fun LowerPanel(menuList: List<HomeMenuItemLocal> = emptyList()) {
+fun LowerPanel(menuList: List<HomeMenuItemLocal> = emptyList(), navController: NavHostController) {
     Column {
         WeeklySpecialCard()
         LazyColumn {
             itemsIndexed(menuList) {_ , item ->
-                MenuDish(item)
+                MenuDish(item, navController)
             }
         }
     }
@@ -49,17 +50,13 @@ fun WeeklySpecialCard(){
 }
 
 @Composable
-fun MenuDish(menuItem: HomeMenuItemLocal) {
-    val imageId = when (menuItem.id) {
-        1 -> R.drawable.greeksalad
-        2 -> R.drawable.lemondessert
-        3 -> R.drawable.bruschetta
-        4 -> R.drawable.grilledfish
-        5 -> R.drawable.pasta
-        6 -> R.drawable.lasagne
-        else -> R.drawable.launcher_img
-    }
-    Surface {
+fun MenuDish(menuItem: HomeMenuItemLocal, navController:NavHostController? = null) {
+    val imageId = getDishImageId(menuItem.id)
+    Surface(
+        onClick = {
+            navController?.navigate(DishDetails.route+"/${menuItem.id}")
+        }
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -99,8 +96,14 @@ fun MenuDish(menuItem: HomeMenuItemLocal) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun LowerPanelPreview() {
-    LowerPanel()
+fun getDishImageId(id: Int): Int {
+    return when (id) {
+        1 -> R.drawable.greeksalad
+        2 -> R.drawable.lemondessert
+        3 -> R.drawable.bruschetta
+        4 -> R.drawable.grilledfish
+        5 -> R.drawable.pasta
+        6 -> R.drawable.lasagne
+        else -> R.drawable.launcher_img
+    }
 }

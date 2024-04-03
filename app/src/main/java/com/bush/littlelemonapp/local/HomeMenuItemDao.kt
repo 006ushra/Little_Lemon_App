@@ -15,4 +15,7 @@ interface HomeMenuItemDao {
 
     @Query("SELECT * FROM HomeMenuItemLocal")
     fun getAll(): LiveData<List<HomeMenuItemLocal>>
+
+    @Query("SELECT * FROM HomeMenuItemLocal WHERE id = :userId")
+    fun getDish(userId: Int): LiveData<HomeMenuItemLocal>
 }

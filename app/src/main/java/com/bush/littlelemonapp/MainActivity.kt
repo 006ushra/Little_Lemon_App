@@ -2,16 +2,24 @@ package com.bush.littlelemonapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import androidx.room.Room
 import com.bush.littlelemonapp.local.AppDatabase
+import com.bush.littlelemonapp.local.HomeMenuItemLocal
 import com.bush.littlelemonapp.remote.HomeMenu
 import com.bush.littlelemonapp.remote.HomeMenuItem
+import com.bush.littlelemonapp.uiComponents.DishDetails
 import com.bush.littlelemonapp.uiComponents.LowerPanel
 import com.bush.littlelemonapp.uiComponents.TopAppBar
 import com.bush.littlelemonapp.uiComponents.UpperPanel
@@ -42,10 +50,26 @@ class MainActivity : AppCompatActivity() {
         setContent {
             LittleLemonTheme {
                 val homeMenuList by database.menuItemDao().getAll().observeAsState(emptyList())
-                Column {
-                    TopAppBar()
-                    UpperPanel()
-                    LowerPanel(homeMenuList)
+
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = Home.route) {
+                    composable(
+                        Home.route
+                    ) {
+                        HomeScreen(homeMenuList, navController)
+                    }
+                    composable(
+                        DishDetails.route + "/{${DishDetails.argDishId}}",
+                        arguments = listOf(navArgument(DishDetails.argDishId) {type = NavType.IntType})
+                    ) {
+                        val id = requireNotNull(it.arguments?.getInt(DishDetails.argDishId)) {
+                            "dish id is Null"
+                        }
+                        val dish by database.menuItemDao().getDish(id).observeAsState(
+                            HomeMenuItemLocal(10, "Please try again", "Please try again", 0f)
+                        )
+                        DishDetails(dish)
+                    }
                 }
             }
         }
@@ -56,10 +80,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun getHomeMenuItems(): List<HomeMenuItem> {
-        val response = httpClient.get("https://raw.githubusercontent.com/006ushra/Little_Lemon_App/master/home_screen_menu.json") {
-            header("Authorization", "TOKEN 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")
+    @Composable
+    fun HomeScreen(menuList: List<HomeMenuItemLocal>, navController: NavHostController) {
+        Column {
+            TopAppBar()
+            UpperPanel()
+            LowerPanel(menuList, navController)
         }
+    }
+
+    private suspend fun getHomeMenuItems(): List<HomeMenuItem> {
+        val response = httpClient.get("https://raw.githubusercontent.com/006ushra/Little_Lemon_App/master/home_screen_menu.json")
             .body<HomeMenu>()
         return response.menu
     }

@@ -12,14 +12,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.bush.littlelemonapp.R
+import com.bush.littlelemonapp.ReserveTable
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 
 @Composable
-fun UpperPanel() {
+fun UpperPanel(navController: NavHostController? = null) {
     Column(
         modifier = Modifier
             .background(ThemeColor.green)
@@ -59,7 +60,9 @@ fun UpperPanel() {
             )
         }
         Button(
-            onClick = {},
+            onClick = {
+                      navController?.navigate(ReserveTable.route)
+            },
             colors = ButtonColors(
                 ThemeColor.yellow,
                 ThemeColor.charcoal,
@@ -68,15 +71,9 @@ fun UpperPanel() {
             )
         ) {
             Text(
-                text = "Order Take Away",
+                text = "Reserve a Table",
                 fontWeight = FontWeight.Bold
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun UpperPanelPreview() {
-    UpperPanel()
 }

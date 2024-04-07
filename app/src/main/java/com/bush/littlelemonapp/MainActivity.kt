@@ -19,10 +19,7 @@ import com.bush.littlelemonapp.local.AppDatabase
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
 import com.bush.littlelemonapp.remote.HomeMenu
 import com.bush.littlelemonapp.remote.HomeMenuItem
-import com.bush.littlelemonapp.uiComponents.DishDetails
-import com.bush.littlelemonapp.uiComponents.LowerPanel
-import com.bush.littlelemonapp.uiComponents.TopAppBar
-import com.bush.littlelemonapp.uiComponents.UpperPanel
+import com.bush.littlelemonapp.uiComponents.*
 import com.bush.littlelemonapp.uiTheme.LittleLemonTheme
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -70,6 +67,11 @@ class MainActivity : AppCompatActivity() {
                         )
                         DishDetails(dish)
                     }
+                    composable(
+                        ReserveTable.route
+                    ) {
+                        ReserveTableForm()
+                    }
                 }
             }
         }
@@ -84,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     fun HomeScreen(menuList: List<HomeMenuItemLocal>, navController: NavHostController) {
         Column {
             TopAppBar()
-            UpperPanel()
+            UpperPanel(navController)
             LowerPanel(menuList, navController)
         }
     }

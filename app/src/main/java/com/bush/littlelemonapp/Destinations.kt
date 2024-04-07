@@ -12,3 +12,7 @@ object DishDetails: Destinations {
     override val route = "details"
     val argDishId = "dishId"
 }
+
+object ReserveTable: Destinations {
+    override val route = "reserve"
+}

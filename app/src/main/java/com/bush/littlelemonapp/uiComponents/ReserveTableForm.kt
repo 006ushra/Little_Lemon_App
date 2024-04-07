@@ -2,9 +2,9 @@ package com.bush.littlelemonapp.uiComponents
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bush.littlelemonapp.R
@@ -21,9 +22,10 @@ import com.bush.littlelemonapp.uiTheme.ThemeColor
 
 @Composable
 fun ReserveTableForm() {
-    Column {
+    Column(
+        modifier = Modifier.verticalScroll(rememberScrollState())
+    ) {
         TopAppBar()
-        ReserveUpperPanel()
         Form()
     }
 }
@@ -68,42 +70,73 @@ fun Form() {
         1 -> FormStepOne(step)
         2 -> FormStepTwo(step)
         3 -> FormStepThree(step)
-        else -> FormStepThree(step)
+        4 -> FormStepFour()
+        else -> FormStepFour()
     }
-    Button(
-        onClick = {step++},
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = 24.dp, vertical = 47.dp)
     ) {
-        Text(
-            text = if (step == 3) {
-                "Submit"
-            } else {
-                "Next"
+        if (step != 4) {
+            Button(
+                onClick = {
+                    step--
+                    if (step <= 0) {
+                        //navigate to home
+                    }
+                },
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 7.dp)
+            ) {
+                Text(
+                    text = "Back"
+                )
             }
-        )
+        }
+        Button(
+            onClick = {step++},
+            modifier = Modifier
+                .weight(1f)
+                .padding(start = 7.dp)
+        ) {
+            Text(
+                text = when (step) {
+                    3 -> { "Submit" }
+                    4 -> { "Home" }
+                    else -> { "Next" }
+                }
+            )
+        }
     }
 }
 
 @Composable
 fun FormStepOne(step: Int) {
+    ReserveUpperPanel()
     StepsCounter(step)
     TitleCard(step)
     Column(
-        modifier = Modifier.padding(start = 24.dp, top = 22.dp, bottom = 47.dp)
+        modifier = Modifier.padding(start = 24.dp, top = 22.dp)
     ) {
         OutlinedTextField(
             value = "",
             label = {
-                Text(text = "Full Name")
+                Text(text = "Full Name*")
+            },
+            supportingText = {
+                Text(text = "* Required")
             },
             onValueChange = {}
         )
         OutlinedTextField(
             value = "",
             label = {
-                Text(text = "Email")
+                Text(text = "Email*")
+            },
+            supportingText = {
+                Text(text = "* Required")
             },
             onValueChange = {}
         )
@@ -112,6 +145,9 @@ fun FormStepOne(step: Int) {
             label = {
                 Text(text = "Phone Number")
             },
+            supportingText = {
+                Text(text = "For contact regarding the booking.")
+            },
             onValueChange = {}
         )
     }
@@ -119,48 +155,96 @@ fun FormStepOne(step: Int) {
 
 @Composable
 fun FormStepTwo(step: Int) {
+    ReserveUpperPanel()
     StepsCounter(step)
     TitleCard(step)
     Column(
-        modifier = Modifier.padding(start = 24.dp, top = 22.dp, bottom = 47.dp)
+        modifier = Modifier.padding(start = 24.dp, top = 22.dp)
     ) {
         OutlinedTextField(
             value = "",
             label = {
-                Text(text = "Reservation Date")
+                Text(text = "Reservation Date*")
+            },
+            supportingText = {
+                Text(text = "* Required")
             },
             onValueChange = {}
         )
         OutlinedTextField(
             value = "",
             label = {
-                Text(text = "Reservation Time")
+                Text(text = "Reservation Time*")
+            },
+            supportingText = {
+                Text(text = "* Required")
             },
             onValueChange = {}
         )
-        OutlinedTextField(
-            value = "",
-            label = {
-                Text(text = "Number of Diners")
-            },
-            onValueChange = {}
+        Text(
+            text = "Number of Diners",
+            modifier = Modifier.padding(top = 5.dp)
         )
+        Counter()
     }
 }
 
 @Composable
 fun FormStepThree(step: Int) {
+    ReserveUpperPanel()
     StepsCounter(step)
     TitleCard(step)
     Column(
-        modifier = Modifier.padding(start = 24.dp, top = 22.dp, bottom = 47.dp)
+        modifier = Modifier.padding(start = 24.dp, top = 22.dp)
     ) {
         OutlinedTextField(
             value = "",
             label = {
                 Text(text = "Additional Notes")
             },
-            onValueChange = {}
+            onValueChange = {},
+            supportingText = {
+                Text(text = "Any thing for us to look out for; allergies, special requests, ...etc.")
+            }
+        )
+    }
+}
+
+@Composable
+fun FormStepFour() {
+    Column(
+        modifier = Modifier
+            .background(ThemeColor.green)
+            .padding(horizontal = 12.dp, vertical = 16.dp)
+
+    ) {
+        Text(
+            text = "Thank you!",
+            fontSize = 40.sp,
+            fontWeight = FontWeight.Bold,
+            color = ThemeColor.yellow,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 100.dp)
+        )
+        Text(
+            text = "Table successfully booked.",
+            fontSize = 24.sp,
+            color = ThemeColor.cloud,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 25.dp),
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = "We sent you a confirmation email. Please check it out.",
+            fontSize = 16.sp,
+            letterSpacing = 0.5.sp,
+            color = ThemeColor.cloud,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .padding(bottom = 116.dp)
         )
     }
 }

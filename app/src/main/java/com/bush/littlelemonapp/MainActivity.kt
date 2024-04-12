@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                     composable(
                         ReserveTable.route
                     ) {
-                        ReserveTableForm()
+                        ReserveTableForm(navController)
                     }
                 }
             }

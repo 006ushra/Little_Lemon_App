@@ -17,16 +17,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.bush.littlelemonapp.Home
 import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 
 @Composable
-fun ReserveTableForm() {
+fun ReserveTableForm(navController: NavHostController? = null) {
     Column(
         modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
         TopAppBar()
-        Form()
+        Form(navController)
     }
 }
 
@@ -62,11 +64,12 @@ fun ReserveUpperPanel() {
 }
 
 @Composable
-fun Form() {
+fun Form(navController: NavHostController? = null) {
     var step by remember {
         mutableStateOf(1)
     }
     when(step){
+        0 -> FormStepOne(step)
         1 -> FormStepOne(step)
         2 -> FormStepTwo(step)
         3 -> FormStepThree(step)
@@ -78,12 +81,12 @@ fun Form() {
             .fillMaxWidth()
             .padding(horizontal = 24.dp, vertical = 47.dp)
     ) {
-        if (step != 4) {
+        if (step < 4) {
             Button(
                 onClick = {
                     step--
                     if (step <= 0) {
-                        //navigate to home
+                        navController?.navigate(Home.route)
                     }
                 },
                 modifier = Modifier
@@ -96,7 +99,12 @@ fun Form() {
             }
         }
         Button(
-            onClick = {step++},
+            onClick = {
+                step++
+                if (step > 4) {
+                    navController?.navigate(Home.route)
+                }
+                      },
             modifier = Modifier
                 .weight(1f)
                 .padding(start = 7.dp)
@@ -105,6 +113,7 @@ fun Form() {
                 text = when (step) {
                     3 -> { "Submit" }
                     4 -> { "Home" }
+                    5 -> { "Home" }
                     else -> { "Next" }
                 }
             )
@@ -254,6 +263,7 @@ fun StepsCounter(step: Int) {
     Image(
         painter = painterResource(
             id = when(step) {
+                0 -> R.drawable.progress1
                 1 -> R.drawable.progress1
                 2 -> R.drawable.progress2
                 3 -> R.drawable.progress3
@@ -277,7 +287,7 @@ fun StepsCounter(step: Int) {
 @Composable
 fun TitleCard(step: Int) {
     Text(
-        text = if (step == 1) "Personal Information" else "About The Reservation",
+        text = if (step <= 1) "Personal Information" else "About The Reservation",
         fontSize = 24.sp,
         color = ThemeColor.charcoal,
         modifier = Modifier.padding(start = 16.dp)

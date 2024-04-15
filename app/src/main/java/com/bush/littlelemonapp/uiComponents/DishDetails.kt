@@ -15,19 +15,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 
 @Composable
-fun DishDetails (dish: HomeMenuItemLocal) {
+fun DishDetails (dish: HomeMenuItemLocal, navController: NavHostController) {
     Column(
         verticalArrangement = Arrangement.spacedBy(10.dp),
         modifier = Modifier.padding(horizontal = 10.dp)
     ) {
-        TopAppBar()
+        TopAppBar(navController)
         Image(
             painter = painterResource(id = getDishImageId(dish.id)),
             contentDescription = dish.name,
@@ -103,11 +103,4 @@ fun Counter() {
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun DishDetailsPreview() {
-    val dish = HomeMenuItemLocal(2, "Lemon Dessert", "Traditional homemade Italian Lemon Ricotta Cake", 8.99f)
-    DishDetails(dish)
 }

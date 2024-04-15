@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                         val dish by database.menuItemDao().getDish(id).observeAsState(
                             HomeMenuItemLocal(10, "Please try again", "Please try again", 0f)
                         )
-                        DishDetails(dish)
+                        DishDetails(dish, navController)
                     }
                     composable(
                         ReserveTable.route
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
     @Composable
     fun HomeScreen(menuList: List<HomeMenuItemLocal>, navController: NavHostController) {
         Column {
-            TopAppBar()
+            TopAppBar(navController)
             UpperPanel(navController)
             LowerPanel(menuList, navController)
         }

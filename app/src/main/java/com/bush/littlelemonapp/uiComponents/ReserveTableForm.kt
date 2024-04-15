@@ -27,7 +27,9 @@ fun ReserveTableForm(navController: NavHostController? = null) {
     Column(
         modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
-        TopAppBar()
+        if (navController != null) {
+            TopAppBar(navController)
+        }
         Form(navController)
     }
 }

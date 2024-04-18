@@ -47,47 +47,39 @@ class MainActivity : AppCompatActivity() {
         setContent {
             LittleLemonTheme {
                 val homeMenuList by database.menuItemDao().getAll().observeAsState(emptyList())
-
-                val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = Home.route) {
-                    composable(
-                        Home.route
-                    ) {
-                        HomeScreen(homeMenuList, navController)
-                    }
-                    composable(
-                        DishDetails.route + "/{${DishDetails.argDishId}}",
-                        arguments = listOf(navArgument(DishDetails.argDishId) {type = NavType.IntType})
-                    ) {
-                        val id = requireNotNull(it.arguments?.getInt(DishDetails.argDishId)) {
-                            "dish id is Null"
-                        }
-                        val dish by database.menuItemDao().getDish(id).observeAsState(
-                            HomeMenuItemLocal(10, "Please try again", "Please try again", 0f)
-                        )
-                        DishDetails(dish, navController)
-                    }
-                    composable(
-                        ReserveTable.route
-                    ) {
-                        ReserveTableForm(navController)
-                    }
-                }
+                DrawerAppComponent(homeMenuList)
+//
+//                val navController = rememberNavController()
+//                NavHost(navController = navController, startDestination = Home.route) {
+//                    composable(
+//                        Home.route
+//                    ) {
+//                        HomeScreen(homeMenuList, navController)
+//                    }
+//                    composable(
+//                        DishDetails.route + "/{${DishDetails.argDishId}}",
+//                        arguments = listOf(navArgument(DishDetails.argDishId) {type = NavType.IntType})
+//                    ) {
+//                        val id = requireNotNull(it.arguments?.getInt(DishDetails.argDishId)) {
+//                            "dish id is Null"
+//                        }
+//                        val dish by database.menuItemDao().getDish(id).observeAsState(
+//                            HomeMenuItemLocal(10, "Please try again", "Please try again", 0f)
+//                        )
+//                        DishDetails(dish, navController)
+//                    }
+//                    composable(
+//                        ReserveTable.route
+//                    ) {
+//                        ReserveTableForm(navController)
+//                    }
+//                }
             }
         }
         lifecycleScope.launch(Dispatchers.IO) {
             if (database.menuItemDao().isEmpty()) {
                 saveHomeMenuItems(getHomeMenuItems())
             }
-        }
-    }
-
-    @Composable
-    fun HomeScreen(menuList: List<HomeMenuItemLocal>, navController: NavHostController) {
-        Column {
-            TopAppBar(navController)
-            UpperPanel(navController)
-            LowerPanel(menuList, navController)
         }
     }
 

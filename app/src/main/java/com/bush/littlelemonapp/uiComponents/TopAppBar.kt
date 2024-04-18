@@ -16,7 +16,7 @@ import com.bush.littlelemonapp.Home
 import com.bush.littlelemonapp.R
 
 @Composable
-fun TopAppBar(navController: NavHostController) {
+fun TopAppBar(navController: NavHostController, openDrawer: () -> Unit = {}) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination?.route
     Row(
@@ -25,7 +25,7 @@ fun TopAppBar(navController: NavHostController) {
         modifier = Modifier.fillMaxWidth()
     ) {
         IconButton(
-            onClick = { /*TODO*/ }
+            onClick = { openDrawer }
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_hamburger_menu),
@@ -55,10 +55,4 @@ fun TopAppBar(navController: NavHostController) {
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun TopAppBarPreview() {
-    TopAppBar()
 }

@@ -9,10 +9,10 @@ import com.bush.littlelemonapp.local.HomeMenuItemLocal
 fun HomeScreen(
     menuList: List<HomeMenuItemLocal>,
     navController: NavHostController,
-    openDrawer: () -> Unit
+//    openDrawer: () -> Unit
 ) {
     Column {
-        TopAppBar(navController, openDrawer)
+        TopAppBar(navController/*, openDrawer*/)
         UpperPanel(navController)
         LowerPanel(menuList, navController)
     }

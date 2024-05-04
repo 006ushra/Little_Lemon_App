@@ -6,9 +6,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
@@ -98,85 +96,9 @@ fun BodyContentComponent(
 ) {
     val navController = rememberNavController()
     when(currentScreen) {
-        DrawerAppScreen.Home -> HomeScreen(menuItemsList, navController, openDrawer)
+        DrawerAppScreen.Home -> HomeScreen(menuItemsList, navController/*, openDrawer*/)
         DrawerAppScreen.MyAccount -> MyAccount(openDrawer)
         DrawerAppScreen.Settings -> SettingsScreen(openDrawer)
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun Screen1Component(openDrawer: () -> Unit) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        // TopAppBar has slots for a title, navigation icon,
-        // and actions. Also known as the action bar.
-        TopAppBar(
-            title = { Text("Screen 1 Title") },
-            navigationIcon = {
-                IconButton(onClick = openDrawer) {
-                    Icon(imageVector = Icons.Filled.Menu, contentDescription = "Menu")
-                }
-            }
-        )
-        Surface(color = Color(0xFFffd7d7.toInt()), modifier = Modifier.weight(1f)) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                content = {
-                    Text(text = "Geeks for geeks : Geeks learning from geeks")
-                }
-            )
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun Screen2Component(openDrawer: () -> Unit) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        TopAppBar(
-            title = { Text("Screen 2 Title") },
-            navigationIcon = {
-                IconButton(onClick = openDrawer) {
-                    Icon(imageVector = Icons.Filled.Menu, contentDescription = "Menu")
-                }
-            }
-        )
-        Surface(color = Color(0xFFffe9d6.toInt()), modifier = Modifier.weight(1f)) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                content = {
-                    Text(text = "GFG : GeeksforGeeks was founded by Sandeep Jain")
-                }
-            )
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun Screen3Component(openDrawer: () -> Unit) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        TopAppBar(
-            title = { Text("Screen 3 Title") },
-            navigationIcon = {
-                IconButton(onClick = openDrawer) {
-                    Icon(imageVector = Icons.Filled.Menu, contentDescription = "Menu")
-                }
-            }
-        )
-        Surface(color = Color(0xFFfffbd0.toInt()), modifier = Modifier.weight(1f)) {
-            Column(modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                content = {
-                    Text(text = "Address: A-143, 9th Floor, Sovereign Corporate Tower Sector-136, Noida, Uttar Pradesh - 201305")
-                }
-            )
-        }
     }
 }
 

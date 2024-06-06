@@ -4,6 +4,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun MyAccount(openDrawer: () -> Unit) {
+fun MyAccount() {
     Text(text = "My Account")
 }

@@ -97,8 +97,8 @@ fun BodyContentComponent(
     val navController = rememberNavController()
     when(currentScreen) {
         DrawerAppScreen.Home -> HomeScreen(menuItemsList, navController/*, openDrawer*/)
-        DrawerAppScreen.MyAccount -> MyAccount(openDrawer)
-        DrawerAppScreen.Settings -> SettingsScreen(openDrawer)
+        DrawerAppScreen.MyAccount -> MyAccount()
+        DrawerAppScreen.Settings -> SettingsScreen()
     }
 }
 

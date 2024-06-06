@@ -74,6 +74,8 @@ class MainActivity : AppCompatActivity() {
                         ReserveTableForm(navController)
                     }
                 }
+
+                NavigationDrawer(homeMenuList, navController)
             }
         }
         lifecycleScope.launch(Dispatchers.IO) {

@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,13 +31,13 @@ fun UpperPanel(navController: NavHostController? = null) {
             )
     ) {
         Text(
-            text = "Little Lemon",
+            text = stringResource(id = R.string.little_lemon),
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
             color = ThemeColor.yellow
         )
         Text(
-            text = "Chicago",
+            text = stringResource(id = R.string.chicago),
             fontSize = 24.sp,
             color = ThemeColor.cloud
         )
@@ -45,7 +46,7 @@ fun UpperPanel(navController: NavHostController? = null) {
             modifier = Modifier.padding(top = 20.dp)
         ) {
             Text(
-                text = "We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.",
+                text = stringResource(id = R.string.restaurant_desc),
                 fontSize = 16.sp,
                 letterSpacing = 0.5.sp,
                 color = ThemeColor.cloud,
@@ -71,7 +72,7 @@ fun UpperPanel(navController: NavHostController? = null) {
             )
         ) {
             Text(
-                text = "Reserve a Table",
+                text = stringResource(id = R.string.reserve_button),
                 fontWeight = FontWeight.Bold
             )
         }

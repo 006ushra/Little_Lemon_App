@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Little Lemon App</string>
+    <string name="weekly_special">أطباق الأسبوع</string>
+    <string name="personal_info">المعلومات الشخصية</string>
+    <string name="first_name">الاسم الأول</string>
+    <string name="last_name">الاسم الأخير</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="log_out">تسجيل الخروج</string>
+    <string name="home">الرئيسة</string>
+    <string name="my_account">حسابي</string>
+    <string name="settings">الإعدادات</string>
+    <string name="reserve_title">احجز طاولة في مطعمنا.</string>
+    <string name="reserve_text">ألآن تستطيع حجز طاولة ببضع نقرات، ويمكنك التمتع بجميع خيرات المطعم المتوسط في الوقت الذي تحب.</string>
+    <string name="reserve_subtext">رجاءً املأ هذه البيانات لحجز طاولتك.</string>
+    <string name="back">رجوع</string>
+    <string name="submit">أرسل</string>
+    <string name="next">التالي</string>
+    <string name="full_name">الاسم الكامل</string>
+    <string name="required">مطلوب</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="phone_subtext">للتواصل معك بشأن الحجز.</string>
+    <string name="date">تاريح الحجز</string>
+    <string name="time">وقت الحجز</string>
+    <string name="diners">عدد الأشخاص</string>
+    <string name="notes">ملاحظات إضافية</string>
+    <string name="notes_subtext">أي معلومة تريد منا مراعاتها: حساسيات من أطعمة معينة، طلبات خاصة،... إلخ</string>
+    <string name="little_lemon">ليتل ليمون</string>
+    <string name="chicago">شيكاعو</string>
+    <string name="restaurant_desc">ليتل ليمون هو مطعم عائلي متخصص في أطباق منطقة البحر الأبيض المتوسط، يقدم أطباق تقليدية بلمسة عصرية</string>
+    <string name="reserve_button">احجز طاولة</string>
+    <string name="thank_you">شكرًا لك!</string>
+    <string name="reserve_success">حُجزت الطاولة بنجاح</string>
+    <string name="success_subtext">لقد أرسلنا لك بريدًا إلكترونيًا للتأكيد، رجاءً اطلع عليه.</string>
+    <string name="about_reservation">تفاصيل الحجز</string>
+</resources>

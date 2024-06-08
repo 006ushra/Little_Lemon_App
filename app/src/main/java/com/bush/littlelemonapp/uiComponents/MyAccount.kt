@@ -10,10 +10,12 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.uiTheme.ThemeColor.charcoal
 import com.bush.littlelemonapp.uiTheme.ThemeColor.yellow
 
@@ -28,27 +30,27 @@ fun MyAccount() {
         ) {
 
             Text(
-                text = "Personal Information",
+                text = stringResource(id = R.string.personal_info),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(top = 50.dp, bottom = 30.dp)
             )
             Column(verticalArrangement = Arrangement.SpaceAround) {
-                Text(text = "First Name:")
+                Text(text = stringResource(id = R.string.first_name))
                 OutlinedTextField(
                     value = "first name",
                     onValueChange = {},
                     readOnly = true,
                     modifier = Modifier.fillMaxWidth()
                 )
-                Text(text = "Last Name:", modifier = Modifier.padding(top = 20.dp))
+                Text(text = stringResource(id = R.string.last_name), modifier = Modifier.padding(top = 20.dp))
                 OutlinedTextField(
                     value = "last name",
                     onValueChange = {},
                     readOnly = true,
                     modifier = Modifier.fillMaxWidth()
                 )
-                Text(text = "Email:", modifier = Modifier.padding(top = 20.dp))
+                Text(text = stringResource(id = R.string.email), modifier = Modifier.padding(top = 20.dp))
                 OutlinedTextField(
                     value = "email",
                     onValueChange = {},
@@ -68,7 +70,7 @@ fun MyAccount() {
                 .fillMaxWidth()
                 .padding(vertical = 10.dp, horizontal = 20.dp)
         ) {
-            Text(text = "Log Out")
+            Text(text = stringResource(id = R.string.log_out))
         }
     }
 }

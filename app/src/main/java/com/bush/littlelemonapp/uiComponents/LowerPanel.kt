@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,7 +41,7 @@ fun WeeklySpecialCard(){
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(
-            text = "Weekly Special",
+            text = stringResource(id = R.string.weekly_special),
             fontSize = 26.sp,
             fontWeight = FontWeight.Bold,
             color = ThemeColor.charcoal,

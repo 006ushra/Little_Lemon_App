@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -42,14 +43,14 @@ fun ReserveUpperPanel() {
             .padding(horizontal = 12.dp, vertical = 16.dp)
     ) {
         Text(
-            text = "Reserve a Table at Our Restaurant",
+            text = stringResource(id = R.string.reserve_title),
             fontSize = 35.sp,
             lineHeight = 40.sp,
             fontWeight = FontWeight.Bold,
             color = ThemeColor.charcoal
         )
         Text(
-            text = "Now you can book a table with only a few taps. And you can enjoy all the goodness of traditional mediterranean food at your preferred time.",
+            text = stringResource(id = R.string.reserve_text),
             fontSize = 16.sp,
             letterSpacing = 0.5.sp,
             color = ThemeColor.charcoal,
@@ -57,7 +58,7 @@ fun ReserveUpperPanel() {
                 .padding(top = 32.dp, bottom = 28.dp)
         )
         Text(
-            text = "Please fill out this form to book a table.",
+            text = stringResource(id = R.string.reserve_subtext),
             fontSize = 16.sp,
             letterSpacing = 0.5.sp,
             color = ThemeColor.charcoal,
@@ -96,7 +97,7 @@ fun Form(navController: NavHostController? = null) {
                     .padding(end = 7.dp)
             ) {
                 Text(
-                    text = "Back"
+                    text = stringResource(id = R.string.back)
                 )
             }
         }
@@ -113,10 +114,10 @@ fun Form(navController: NavHostController? = null) {
         ) {
             Text(
                 text = when (step) {
-                    3 -> { "Submit" }
-                    4 -> { "Home" }
-                    5 -> { "Home" }
-                    else -> { "Next" }
+                    3 -> { stringResource(id = R.string.submit) }
+                    4 -> { stringResource(id = R.string.home) }
+                    5 -> { stringResource(id = R.string.home) }
+                    else -> { stringResource(id = R.string.next) }
                 }
             )
         }
@@ -134,30 +135,30 @@ fun FormStepOne(step: Int) {
         OutlinedTextField(
             value = "",
             label = {
-                Text(text = "Full Name*")
+                Text(text = stringResource(id = R.string.full_name) + "*")
             },
             supportingText = {
-                Text(text = "* Required")
+                Text(text = "* " + stringResource(id = R.string.required))
             },
             onValueChange = {}
         )
         OutlinedTextField(
             value = "",
             label = {
-                Text(text = "Email*")
+                Text(text = stringResource(id = R.string.email) + "*")
             },
             supportingText = {
-                Text(text = "* Required")
+                Text(text = "* " + stringResource(id = R.string.required))
             },
             onValueChange = {}
         )
         OutlinedTextField(
             value = "",
             label = {
-                Text(text = "Phone Number")
+                Text(text = stringResource(id = R.string.phone))
             },
             supportingText = {
-                Text(text = "For contact regarding the booking.")
+                Text(text = stringResource(id = R.string.phone_subtext))
             },
             onValueChange = {}
         )
@@ -175,25 +176,25 @@ fun FormStepTwo(step: Int) {
         OutlinedTextField(
             value = "",
             label = {
-                Text(text = "Reservation Date*")
+                Text(text = stringResource(id = R.string.date) + "*")
             },
             supportingText = {
-                Text(text = "* Required")
+                Text(text = "* " + stringResource(id = R.string.required))
             },
             onValueChange = {}
         )
         OutlinedTextField(
             value = "",
             label = {
-                Text(text = "Reservation Time*")
+                Text(text = stringResource(id = R.string.time) + "*")
             },
             supportingText = {
-                Text(text = "* Required")
+                Text(text = "* " + stringResource(id = R.string.required))
             },
             onValueChange = {}
         )
         Text(
-            text = "Number of Diners",
+            text = stringResource(id = R.string.diners),
             modifier = Modifier.padding(top = 5.dp)
         )
         Counter()
@@ -211,11 +212,11 @@ fun FormStepThree(step: Int) {
         OutlinedTextField(
             value = "",
             label = {
-                Text(text = "Additional Notes")
+                Text(text = stringResource(id = R.string.notes))
             },
             onValueChange = {},
             supportingText = {
-                Text(text = "Any thing for us to look out for; allergies, special requests, ...etc.")
+                Text(text = stringResource(id = R.string.notes_subtext))
             }
         )
     }
@@ -230,7 +231,7 @@ fun FormStepFour() {
 
     ) {
         Text(
-            text = "Thank you!",
+            text = stringResource(id = R.string.thank_you),
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
             color = ThemeColor.yellow,
@@ -240,7 +241,7 @@ fun FormStepFour() {
                 .padding(top = 100.dp)
         )
         Text(
-            text = "Table successfully booked.",
+            text = stringResource(id = R.string.reserve_success),
             fontSize = 24.sp,
             color = ThemeColor.cloud,
             modifier = Modifier
@@ -249,7 +250,7 @@ fun FormStepFour() {
             textAlign = TextAlign.Center
         )
         Text(
-            text = "We sent you a confirmation email. Please check it out.",
+            text = stringResource(id = R.string.success_subtext),
             fontSize = 16.sp,
             letterSpacing = 0.5.sp,
             color = ThemeColor.cloud,
@@ -289,7 +290,7 @@ fun StepsCounter(step: Int) {
 @Composable
 fun TitleCard(step: Int) {
     Text(
-        text = if (step <= 1) "Personal Information" else "About The Reservation",
+        text = if (step <= 1) stringResource(id = R.string.personal_info) else stringResource(id = R.string.about_reservation),
         fontSize = 24.sp,
         color = ThemeColor.charcoal,
         modifier = Modifier.padding(start = 16.dp)

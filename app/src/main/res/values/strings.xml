@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">Little Lemon App</string>
+    <string name="little_lemon">Little Lemon</string>
+    <string name="chicago">Chicago</string>
+    <string name="restaurant_desc">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</string>
+    <string name="reserve_button">Reserve a Table</string>
+    <string name="weekly_special">Weekly Special</string>
+    <string name="personal_info">Personal Information</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="log_out">Log Out</string>
+    <string name="home">Home</string>
+    <string name="my_account">My Account</string>
+    <string name="settings">Settings</string>
+    <string name="reserve_title">Reserve a Table at Our Restaurant</string>
+    <string name="reserve_text">Now you can book a table with only a few taps. And you can enjoy all the goodness of traditional mediterranean food at your preferred time.</string>
+    <string name="reserve_subtext">Please fill out this form to book a table.</string>
+    <string name="back">Back</string>
+    <string name="submit">Submit</string>
+    <string name="next">Next</string>
+    <string name="full_name">Full Name</string>
+    <string name="required">Required</string>
+    <string name="phone">Phone Number</string>
+    <string name="phone_subtext">For contact regarding the booking.</string>
+    <string name="date">Reservation Date</string>
+    <string name="time">Reservation Time</string>
+    <string name="diners">Number of Diners</string>
+    <string name="notes">Additional Notes</string>
+    <string name="notes_subtext">Any thing for us to look out for; allergies, special requests, ...etc.</string>
+    <string name="thank_you">Thank you!</string>
+    <string name="reserve_success">Table successfully booked.</string>
+    <string name="success_subtext">We sent you a confirmation email. Please check it out.</string>
+    <string name="about_reservation">About The Reservation</string>
 </resources>

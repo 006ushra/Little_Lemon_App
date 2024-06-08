@@ -31,9 +31,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.bush.littlelemonapp.Home
+import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
 import kotlinx.coroutines.launch
 
@@ -54,19 +57,19 @@ fun NavigationDrawer(menuList: List<HomeMenuItemLocal>, navController: NavHostCo
     ///List of Navigation Items that will be clicked
     val items = listOf(
         NavigationItems(
-            title = "Home",
+            title = stringResource(id = R.string.home),
             selectedIcon = Icons.Filled.Home,
             unselectedIcon = Icons.Outlined.Home,
             route = Home.route
         ),
         NavigationItems(
-            title = "My Account",
+            title = stringResource(id = R.string.my_account),
             selectedIcon = Icons.Filled.AccountCircle,
             unselectedIcon = Icons.Outlined.AccountCircle,
             route = Home.route
         ),
         NavigationItems(
-            title = "Settings",
+            title = stringResource(id = R.string.settings),
             selectedIcon = Icons.Filled.Settings,
             unselectedIcon = Icons.Outlined.Settings,
             route = Home.route

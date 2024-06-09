@@ -14,13 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.bush.littlelemonapp.DishDetails
 import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
+import com.bush.littlelemonapp.uiTheme.LittleLemonTypography
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 
 @Composable
@@ -42,8 +41,7 @@ fun WeeklySpecialCard(){
     ) {
         Text(
             text = stringResource(id = R.string.weekly_special),
-            fontSize = 26.sp,
-            fontWeight = FontWeight.Bold,
+            style = LittleLemonTypography.displayLarge,
             color = ThemeColor.charcoal,
             modifier = Modifier.padding(8.dp)
         )
@@ -66,12 +64,12 @@ fun MenuDish(menuItem: HomeMenuItemLocal, navController:NavHostController? = nul
             Column {
                 Text(
                     text = menuItem.name,
+                    style = LittleLemonTypography.displayMedium,
                     color = ThemeColor.charcoal,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold
                 )
                 Text(
                     text = menuItem.description,
+                    style = LittleLemonTypography.displaySmall,
                     color = ThemeColor.green,
                     modifier = Modifier
                         .fillMaxWidth(0.75f)
@@ -79,7 +77,7 @@ fun MenuDish(menuItem: HomeMenuItemLocal, navController:NavHostController? = nul
                 )
                 Text(
                     text = "$${menuItem.price}",
-                    fontWeight = FontWeight.Bold,
+                    style = LittleLemonTypography.displayMedium,
                     color = ThemeColor.green
                 )
             }

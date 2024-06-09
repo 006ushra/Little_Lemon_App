@@ -21,13 +21,13 @@ fun LittleLemonTheme (darkTheme: Boolean = isSystemInDarkTheme(), content: @Comp
         MaterialTheme(
             colorScheme = LightColorPalette,
             shapes = MaterialTheme.shapes,
-            typography = MaterialTheme.typography,
+            typography = LittleLemonTypography,
             content = content)
     } else {
         MaterialTheme(
             colorScheme = DarkColorPalette,
             shapes = MaterialTheme.shapes,
-            typography = MaterialTheme.typography,
+            typography = LittleLemonTypography,
             content = content)
     }
 }

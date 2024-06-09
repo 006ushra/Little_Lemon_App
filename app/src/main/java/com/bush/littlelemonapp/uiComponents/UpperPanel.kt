@@ -12,12 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.ReserveTable
+import com.bush.littlelemonapp.uiTheme.LittleLemonTypography
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 
 @Composable
@@ -32,13 +31,12 @@ fun UpperPanel(navController: NavHostController? = null) {
     ) {
         Text(
             text = stringResource(id = R.string.little_lemon),
-            fontSize = 40.sp,
-            fontWeight = FontWeight.Bold,
+            style = LittleLemonTypography.titleLarge,
             color = ThemeColor.yellow
         )
         Text(
             text = stringResource(id = R.string.chicago),
-            fontSize = 24.sp,
+            style = LittleLemonTypography.titleMedium,
             color = ThemeColor.cloud
         )
         Row(
@@ -47,8 +45,7 @@ fun UpperPanel(navController: NavHostController? = null) {
         ) {
             Text(
                 text = stringResource(id = R.string.restaurant_desc),
-                fontSize = 16.sp,
-                letterSpacing = 0.5.sp,
+                style = LittleLemonTypography.bodyMedium,
                 color = ThemeColor.cloud,
                 modifier = Modifier
                     .padding(bottom = 28.dp, end = 20.dp)
@@ -73,7 +70,7 @@ fun UpperPanel(navController: NavHostController? = null) {
         ) {
             Text(
                 text = stringResource(id = R.string.reserve_button),
-                fontWeight = FontWeight.Bold
+                style = LittleLemonTypography.labelSmall
             )
         }
     }

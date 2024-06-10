@@ -1,5 +1,6 @@
 package com.bush.littlelemonapp.uiComponents
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +12,10 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -24,16 +29,14 @@ import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
 import com.bush.littlelemonapp.uiTheme.LittleLemonTypography
 import com.bush.littlelemonapp.uiTheme.ThemeColor
+import com.bush.littlelemonapp.uiTheme.ThemeColor.charcoal
+import com.bush.littlelemonapp.uiTheme.ThemeColor.cloud
 
 @Composable
 fun LowerPanel(menuList: List<HomeMenuItemLocal> = emptyList(), navController: NavHostController) {
     Column {
         WeeklySpecialCard()
-        LazyColumn {
-            itemsIndexed(menuList) {_ , item ->
-                MenuDish(item, navController)
-            }
-        }
+        MenuSection(menuList, navController)
     }
 }
 
@@ -49,6 +52,73 @@ fun WeeklySpecialCard(){
             modifier = Modifier.padding(8.dp)
         )
     }
+}
+
+@Composable
+fun MenuSection(menuList: List<HomeMenuItemLocal>, navController: NavHostController) {
+    var category by remember {
+        mutableStateOf("")
+    }
+    var filteredList: List<HomeMenuItemLocal>
+
+    Column {
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.padding(vertical = 10.dp)
+        ) {
+            Button(
+                onClick = { category = "starters" },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = cloud,
+                    contentColor = charcoal
+                )
+            ) {
+                Text(text = "Starters", style = LittleLemonTypography.labelSmall)
+            }
+            Button(
+                onClick = { category = "mains" },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = cloud,
+                    contentColor = charcoal
+                )
+            ) {
+                Text(text = "Mains", style = LittleLemonTypography.labelSmall)
+            }
+            Button(
+                onClick = { category = "desserts" },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = cloud,
+                    contentColor = charcoal
+                )
+            ) {
+                Text(text = "Desserts", style = LittleLemonTypography.labelSmall)
+            }
+            Button(
+                onClick = { category = "" },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = cloud,
+                    contentColor = charcoal
+                )
+            ) {
+                Text(text = "All", style = LittleLemonTypography.labelSmall)
+            }
+        }
+        filteredList = if (category.isNotBlank()) {
+            menuList.filter {
+                it.category == category
+            }
+        } else {
+            menuList
+        }
+
+        LazyColumn {
+            itemsIndexed(filteredList) { _, item ->
+                MenuDish(item, navController)
+            }
+        }
+    }
+
+
 }
 
 @OptIn(ExperimentalGlideComposeApi::class)

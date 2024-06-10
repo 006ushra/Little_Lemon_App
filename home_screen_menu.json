@@ -5,7 +5,7 @@
       "title": "Greek Salad",
       "description": "The famous greek salad of crispy lettuce, peppers, olives, our Chicago.",
       "price": 12.99,
-      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/greeksalad.jpg",
+      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/greeksalad.jpg?raw=true",
       "category": "starters"
     },
     {
@@ -13,7 +13,7 @@
       "title": "Lemon Desert",
       "description": "Traditional homemade Italian Lemon Ricotta Cake.",
       "price": 8.99,
-      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/lemondessert.jpg",
+      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/lemondessert.jpg?raw=true",
       "category": "desserts"
     },
     {
@@ -21,7 +21,7 @@
       "title": "Grilled Fish",
       "description": "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
       "price": 19.99,
-      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/grilledfish.jpg",
+      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/grilledfish.jpg?raw=true",
       "category": "mains"
     },
     {
@@ -29,7 +29,7 @@
       "title": "Pasta",
       "description": "Penne with fried aubergines, cherry tomatoes, tomato sauce, fresh chilli, garlic, basil & salted ricotta cheese.",
       "price": 8.99,
-      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/pasta.jpg",
+      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/pasta.jpg?raw=true",
       "category": "mains"
     },
     {
@@ -37,7 +37,7 @@
       "title": "Bruschetta",
       "description": "Oven-baked bruschetta stuffed with tomatos and herbs.",
       "price": 4.99,
-      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/bruschetta.jpg",
+      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/bruschetta.jpg?raw=true",
       "category": "starters"
     },
     {
@@ -45,7 +45,7 @@
       "title": "Lasagne",
       "description": "Oven-baked layers of pasta stuffed with Bolognese sauce, béchamel sauce, ham, Parmesan & mozzarella cheese.",
       "price": 7.99,
-      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/lasagne.jpg",
+      "image": "https://github.com/006ushra/Little_Lemon_App/blob/5f78c64ed559d92960618162bac4bb99002d185d/Images/lasagne.jpg?raw=true",
       "category": "mains"
     }
   ]

@@ -1,6 +1,5 @@
 package com.bush.littlelemonapp.uiComponents
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
@@ -11,16 +10,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
+import com.bush.littlelemonapp.uiTheme.LittleLemonTypography
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun DishDetails (dish: HomeMenuItemLocal, navController: NavHostController) {
     Column(
@@ -28,21 +30,23 @@ fun DishDetails (dish: HomeMenuItemLocal, navController: NavHostController) {
         modifier = Modifier.padding(horizontal = 10.dp)
     ) {
         TopAppBar(navController)
-//        Image(
-//            painter = painterResource(id = getDishImageId(dish.id)),
-//            contentDescription = dish.title,
-//            modifier = Modifier.fillMaxWidth(),
-//            contentScale = ContentScale.FillWidth
-//        )
+        GlideImage(
+            model = dish.image,
+            contentDescription = dish.title,
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier.height(380.dp)
+                .width(380.dp)
+                .align(CenterHorizontally)
+        )
         Column {
             Text(
                 text = dish.title,
-                fontSize = 26.sp,
-                fontWeight = FontWeight.Bold,
+                style = LittleLemonTypography.titleMedium,
                 color = ThemeColor.charcoal
             )
             Text(
                 text = dish.description,
+                style = LittleLemonTypography.displaySmall,
                 color = ThemeColor.green
             )
             Counter()
@@ -54,6 +58,7 @@ fun DishDetails (dish: HomeMenuItemLocal, navController: NavHostController) {
             ) {
                 Text(
                     text = "Add for $${dish.price}",
+                    style = LittleLemonTypography.labelSmall,
                     textAlign = TextAlign.Center
                 )
             }

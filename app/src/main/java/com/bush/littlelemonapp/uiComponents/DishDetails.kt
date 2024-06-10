@@ -28,15 +28,15 @@ fun DishDetails (dish: HomeMenuItemLocal, navController: NavHostController) {
         modifier = Modifier.padding(horizontal = 10.dp)
     ) {
         TopAppBar(navController)
-        Image(
-            painter = painterResource(id = getDishImageId(dish.id)),
-            contentDescription = dish.name,
-            modifier = Modifier.fillMaxWidth(),
-            contentScale = ContentScale.FillWidth
-        )
+//        Image(
+//            painter = painterResource(id = getDishImageId(dish.id)),
+//            contentDescription = dish.title,
+//            modifier = Modifier.fillMaxWidth(),
+//            contentScale = ContentScale.FillWidth
+//        )
         Column {
             Text(
-                text = dish.name,
+                text = dish.title,
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
                 color = ThemeColor.charcoal

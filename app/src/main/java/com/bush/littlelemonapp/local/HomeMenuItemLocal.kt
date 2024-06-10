@@ -7,7 +7,9 @@ import androidx.room.PrimaryKey
 data class HomeMenuItemLocal(
     @PrimaryKey
     val id: Int,
-    val name: String,
+    val title: String,
     val description: String,
-    val price: Float
+    val price: Double,
+    val image: String,
+    val category: String
 )

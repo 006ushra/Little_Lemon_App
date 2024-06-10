@@ -146,8 +146,8 @@ fun NavigationDrawer(menuList: List<HomeMenuItemLocal>, navController: NavHostCo
                 )
             }
         ) {
-            when(selectedItemIndex){
-                0 -> HomeScreen(emptyList(), navController)
+            when (selectedItemIndex) {
+                0 -> HomeScreen(menuList, navController)
                 1 -> MyAccount()
                 2 -> SettingsScreen()
             }

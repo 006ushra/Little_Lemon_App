@@ -1,10 +1,11 @@
 package com.bush.littlelemonapp.uiComponents
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,10 +13,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import com.bush.littlelemonapp.DishDetails
 import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
@@ -48,9 +51,9 @@ fun WeeklySpecialCard(){
     }
 }
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun MenuDish(menuItem: HomeMenuItemLocal, navController:NavHostController? = null) {
-    val imageId = getDishImageId(menuItem.id)
     Surface(
         onClick = {
             navController?.navigate(DishDetails.route+"/${menuItem.id}")
@@ -63,7 +66,7 @@ fun MenuDish(menuItem: HomeMenuItemLocal, navController:NavHostController? = nul
         ) {
             Column {
                 Text(
-                    text = menuItem.name,
+                    text = menuItem.title,
                     style = LittleLemonTypography.displayMedium,
                     color = ThemeColor.charcoal,
                 )
@@ -81,10 +84,15 @@ fun MenuDish(menuItem: HomeMenuItemLocal, navController:NavHostController? = nul
                     color = ThemeColor.green
                 )
             }
-            Image(
-                painter = painterResource(id = imageId),
-                contentDescription = "Dish Name",
-                modifier = Modifier.clip(RoundedCornerShape(10.dp))
+            GlideImage(
+                model = menuItem.image,
+                contentDescription = menuItem.title,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .padding(start = 5.dp)
+                    .height(80.dp)
+                    .width(80.dp)
+                    .clip(RoundedCornerShape(10.dp))
             )
         }
         HorizontalDivider(
@@ -92,17 +100,5 @@ fun MenuDish(menuItem: HomeMenuItemLocal, navController:NavHostController? = nul
             thickness = 1.dp,
             color = ThemeColor.yellow
         )
-    }
-}
-
-fun getDishImageId(id: Int): Int {
-    return when (id) {
-        1 -> R.drawable.greeksalad
-        2 -> R.drawable.lemondessert
-        3 -> R.drawable.bruschetta
-        4 -> R.drawable.grilledfish
-        5 -> R.drawable.pasta
-        6 -> R.drawable.lasagne
-        else -> R.drawable.launcher_img
     }
 }

@@ -18,4 +18,7 @@ interface HomeMenuItemDao {
 
     @Query("SELECT * FROM HomeMenuItemLocal WHERE id = :userId")
     fun getDish(userId: Int): LiveData<HomeMenuItemLocal>
+
+    @Query("DELETE FROM HomeMenuItemLocal")
+    fun deleteAll()
 }

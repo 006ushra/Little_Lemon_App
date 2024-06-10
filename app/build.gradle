@@ -86,4 +86,7 @@ dependencies {
 
     // Compose Navigation
     implementation 'androidx.navigation:navigation-compose:2.5.3'
+
+    //Glide for displaying images from api
+    implementation 'com.github.bumptech.glide:compose:1.0.0-alpha.1'
 }

@@ -107,14 +107,3 @@ enum class DrawerAppScreen {
     MyAccount,
     Settings
 }
-
-@Preview
-@Composable
-fun DrawerAppComponentPreview() {
-    val list = listOf(
-        HomeMenuItemLocal(1, "name1", "description1", 1f),
-        HomeMenuItemLocal(2, "name2", "description2", 2f),
-        HomeMenuItemLocal(3, "name3", "description3", 3f),
-    )
-    DrawerAppComponent(list)
-}

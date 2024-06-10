@@ -6,14 +6,18 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class HomeMenuItem(
     val id: Int,
-    val name: String,
+    val title: String,
     val description: String,
-    val price: Float
+    val price: Double,
+    val image: String,
+    val category: String
 ) {
     fun convertToLocalItem() = HomeMenuItemLocal(
         id,
-        name,
+        title,
         description,
-        price
+        price,
+        image,
+        category
     )
 }

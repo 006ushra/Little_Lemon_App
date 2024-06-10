@@ -3,12 +3,9 @@ package com.bush.littlelemonapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -40,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
     private val database by lazy {
         Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database")
+            .fallbackToDestructiveMigration()
             .build()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         setContent {
             LittleLemonTheme {
                 val homeMenuList by database.menuItemDao().getAll().observeAsState(emptyList())
-//                DrawerAppComponent(homeMenuList)
 
                 val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = Home.route) {
@@ -64,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                             "dish id is Null"
                         }
                         val dish by database.menuItemDao().getDish(id).observeAsState(
-                            HomeMenuItemLocal(10, "Please try again", "Please try again", 0f)
+                            HomeMenuItemLocal(10, "Please try again", "Please try again", 0.0, "Please try again", "Please try again")
                         )
                         DishDetails(dish, navController)
                     }

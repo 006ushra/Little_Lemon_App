@@ -8,11 +8,10 @@ import com.bush.littlelemonapp.local.HomeMenuItemLocal
 @Composable
 fun HomeScreen(
     menuList: List<HomeMenuItemLocal>,
-    navController: NavHostController,
-//    openDrawer: () -> Unit
+    navController: NavHostController
 ) {
     Column {
-        TopAppBar(navController/*, openDrawer*/)
+        TopAppBar(navController)
         UpperPanel(navController)
         LowerPanel(menuList, navController)
     }

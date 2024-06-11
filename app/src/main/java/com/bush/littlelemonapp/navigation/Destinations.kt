@@ -1,4 +1,4 @@
-package com.bush.littlelemonapp
+package com.bush.littlelemonapp.navigation
 
 interface Destinations {
     val route: String
@@ -15,4 +15,12 @@ object DishDetails: Destinations {
 
 object ReserveTable: Destinations {
     override val route = "reserve"
+}
+
+object Settings: Destinations {
+    override val route = "settings"
+}
+
+object Account: Destinations {
+    override val route = "account"
 }

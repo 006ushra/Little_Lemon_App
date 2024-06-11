@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.bush.littlelemonapp.DishDetails
+import com.bush.littlelemonapp.navigation.DishDetails
 import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
 import com.bush.littlelemonapp.uiTheme.LittleLemonTypography

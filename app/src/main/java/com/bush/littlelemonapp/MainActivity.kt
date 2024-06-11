@@ -6,17 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import androidx.room.Room
 import com.bush.littlelemonapp.local.AppDatabase
-import com.bush.littlelemonapp.local.HomeMenuItemLocal
+import com.bush.littlelemonapp.navigation.Navigation
 import com.bush.littlelemonapp.remote.HomeMenu
 import com.bush.littlelemonapp.remote.HomeMenuItem
-import com.bush.littlelemonapp.uiComponents.*
 import com.bush.littlelemonapp.uiTheme.LittleLemonTheme
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -45,34 +39,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             LittleLemonTheme {
                 val homeMenuList by database.menuItemDao().getAll().observeAsState(emptyList())
-
-                val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = Home.route) {
-                    composable(
-                        Home.route
-                    ) {
-                        HomeScreen(homeMenuList, navController)
-                    }
-                    composable(
-                        DishDetails.route + "/{${DishDetails.argDishId}}",
-                        arguments = listOf(navArgument(DishDetails.argDishId) {type = NavType.IntType})
-                    ) {
-                        val id = requireNotNull(it.arguments?.getInt(DishDetails.argDishId)) {
-                            "dish id is Null"
-                        }
-                        val dish by database.menuItemDao().getDish(id).observeAsState(
-                            HomeMenuItemLocal(10, "Please try again", "Please try again", 0.0, "Please try again", "Please try again")
-                        )
-                        DishDetails(dish, navController)
-                    }
-                    composable(
-                        ReserveTable.route
-                    ) {
-                        ReserveTableForm(navController)
-                    }
-                }
-
-                NavigationDrawer(homeMenuList, navController)
+                Navigation(homeMenuList, database)
             }
         }
         lifecycleScope.launch(Dispatchers.IO) {

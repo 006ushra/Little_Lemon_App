@@ -12,17 +12,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.uiTheme.ThemeColor.charcoal
 import com.bush.littlelemonapp.uiTheme.ThemeColor.yellow
 
 @Composable
-@Preview(showBackground = true)
-fun MyAccount() {
+fun MyAccount(navController: NavHostController) {
     Column {
+        TopAppBar(navController)
         Column(
             Modifier
                 .weight(1f)

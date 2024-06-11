@@ -15,7 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.bush.littlelemonapp.R
-import com.bush.littlelemonapp.ReserveTable
+import com.bush.littlelemonapp.navigation.ReserveTable
 import com.bush.littlelemonapp.uiTheme.LittleLemonTypography
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 

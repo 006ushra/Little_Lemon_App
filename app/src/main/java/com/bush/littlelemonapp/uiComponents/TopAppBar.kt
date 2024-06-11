@@ -12,11 +12,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.bush.littlelemonapp.Home
+import com.bush.littlelemonapp.navigation.Account
+import com.bush.littlelemonapp.navigation.Home
 import com.bush.littlelemonapp.R
+import com.bush.littlelemonapp.navigation.Settings
 
 @Composable
-fun TopAppBar(navController: NavHostController, openDrawer: () -> Unit = {}) {
+fun TopAppBar(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination?.route
     Row(
@@ -25,10 +27,10 @@ fun TopAppBar(navController: NavHostController, openDrawer: () -> Unit = {}) {
         modifier = Modifier.fillMaxWidth()
     ) {
         IconButton(
-            onClick = { openDrawer }
+            onClick = { navController.navigate(Settings.route) }
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_hamburger_menu),
+                painter = painterResource(id = R.drawable.settings_ic),
                 contentDescription = "sidebar_menu",
                 modifier = Modifier.size(24.dp)
             )
@@ -46,10 +48,10 @@ fun TopAppBar(navController: NavHostController, openDrawer: () -> Unit = {}) {
                 }
         )
         IconButton(
-            onClick = { /*TODO*/ }
+            onClick = { navController.navigate(Account.route) }
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_cart),
+                painter = painterResource(id = R.drawable.account_ic),
                 contentDescription = "cart",
                 modifier = Modifier.size(24.dp)
             )

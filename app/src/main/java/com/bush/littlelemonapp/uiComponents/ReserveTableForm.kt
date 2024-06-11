@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.bush.littlelemonapp.Home
+import com.bush.littlelemonapp.navigation.Home
 import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 

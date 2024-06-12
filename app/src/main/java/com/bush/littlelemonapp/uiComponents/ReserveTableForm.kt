@@ -86,7 +86,6 @@ fun Form(navController: NavHostController? = null, sharedPreferences: SharedPref
         mutableIntStateOf(1)
     }
     var secondFormValues = mapOf<String, String>()
-    var thirdFormValues = ""
 
     when (step) {
         0 -> {
@@ -102,7 +101,7 @@ fun Form(navController: NavHostController? = null, sharedPreferences: SharedPref
         }
 
         3 -> {
-            thirdFormValues = formStepThree(step)
+            FormStepThree(step, sharedPreferences)
         }
 
         4 -> FormStepFour()
@@ -141,7 +140,6 @@ fun Form(navController: NavHostController? = null, sharedPreferences: SharedPref
                         .putString("month", secondFormValues["month"])
                         .putString("time", secondFormValues["time"])
                         .putString("number", secondFormValues["number"])
-                        .putString("notes", thirdFormValues)
                         .apply()
                 }
             },
@@ -280,7 +278,7 @@ fun formStepTwo(step: Int): MutableMap<String, String> {
 }
 
 @Composable
-fun formStepThree(step: Int): String {
+fun FormStepThree(step: Int, sharedPreferences: SharedPreferences) {
     var notes by remember {
         mutableStateOf("")
     }
@@ -295,13 +293,13 @@ fun formStepThree(step: Int): String {
             label = {
                 Text(text = stringResource(id = R.string.notes))
             },
-            onValueChange = { notes = it },
+            onValueChange = { notes = it
+                sharedPreferences.edit().putString("notes", notes).apply()},
             supportingText = {
                 Text(text = stringResource(id = R.string.notes_subtext))
             }
         )
     }
-    return notes
 }
 
 @Composable

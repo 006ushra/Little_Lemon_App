@@ -1,11 +1,21 @@
 package com.bush.littlelemonapp.uiComponents
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -49,7 +59,7 @@ fun DishDetails (dish: HomeMenuItemLocal, navController: NavHostController) {
                 style = LittleLemonTypography.displaySmall,
                 color = ThemeColor.green
             )
-            Counter()
+            counter()
             Button(
                 onClick = { /*TODO*/ },
                 modifier = Modifier
@@ -67,7 +77,7 @@ fun DishDetails (dish: HomeMenuItemLocal, navController: NavHostController) {
 }
 
 @Composable
-fun Counter() {
+fun counter(): Int {
     var counter by remember {
         mutableStateOf(1)
     }
@@ -108,4 +118,5 @@ fun Counter() {
             )
         }
     }
+    return counter
 }

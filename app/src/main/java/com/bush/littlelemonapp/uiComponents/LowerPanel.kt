@@ -10,7 +10,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,9 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.bush.littlelemonapp.navigation.DishDetails
 import com.bush.littlelemonapp.R
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
+import com.bush.littlelemonapp.navigation.DishDetails
 import com.bush.littlelemonapp.uiTheme.LittleLemonTypography
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 import com.bush.littlelemonapp.uiTheme.ThemeColor.charcoal
@@ -48,7 +52,7 @@ fun WeeklySpecialCard(){
         Text(
             text = stringResource(id = R.string.weekly_special),
             style = LittleLemonTypography.displayLarge,
-            color = ThemeColor.charcoal,
+            color = charcoal,
             modifier = Modifier.padding(8.dp)
         )
     }
@@ -138,7 +142,7 @@ fun MenuDish(menuItem: HomeMenuItemLocal, navController:NavHostController? = nul
                 Text(
                     text = menuItem.title,
                     style = LittleLemonTypography.displayMedium,
-                    color = ThemeColor.charcoal,
+                    color = charcoal,
                 )
                 Text(
                     text = menuItem.description,

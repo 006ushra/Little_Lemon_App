@@ -10,11 +10,10 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.bush.littlelemonapp.local.AppDatabase
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
-import com.bush.littlelemonapp.uiComponents.DishDetails
-import com.bush.littlelemonapp.uiComponents.HomeScreen
-import com.bush.littlelemonapp.uiComponents.MyAccount
-import com.bush.littlelemonapp.uiComponents.ReserveTableForm
-import com.bush.littlelemonapp.uiComponents.SettingsScreen
+import com.bush.littlelemonapp.screens.DishDetails
+import com.bush.littlelemonapp.screens.HomeScreen
+import com.bush.littlelemonapp.screens.MyAccount
+import com.bush.littlelemonapp.screens.ReserveTableForm
 
 @Composable
 fun Navigation(homeMenuList: List<HomeMenuItemLocal>, database: AppDatabase) {
@@ -41,11 +40,6 @@ fun Navigation(homeMenuList: List<HomeMenuItemLocal>, database: AppDatabase) {
             ReserveTable.route
         ) {
             ReserveTableForm(navController)
-        }
-        composable(
-            Settings.route
-        ) {
-            SettingsScreen(navController)
         }
         composable(
             Account.route

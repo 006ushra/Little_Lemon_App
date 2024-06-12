@@ -1,4 +1,4 @@
-package com.bush.littlelemonapp.uiComponents
+package com.bush.littlelemonapp.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,6 +29,7 @@ import androidx.navigation.NavHostController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bush.littlelemonapp.local.HomeMenuItemLocal
+import com.bush.littlelemonapp.uiComponents.TopAppBar
 import com.bush.littlelemonapp.uiTheme.LittleLemonTypography
 import com.bush.littlelemonapp.uiTheme.ThemeColor
 
